@@ -38,7 +38,7 @@ class SimonController extends Controller{
     }
 
     public function gameOver(){
-        session()->forget(['numeros','nivel','message']);
+        session()->flush();
         return redirect('/jugar');
     }
 
