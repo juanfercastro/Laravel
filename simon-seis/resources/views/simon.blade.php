@@ -26,7 +26,7 @@
         <h2>Memoriza estos numeros{{ implode('-', $numeros) }}</h2>
     </div>
     <div id="form">
-        <form method="post" action="{{ url('/jugar') }}">
+        <form method="post" action="{{ url('/simon') }}">
             @csrf
             <label for="ans">Respuesta:</label>
             <input type="text" name="ans" id="ans" required>
