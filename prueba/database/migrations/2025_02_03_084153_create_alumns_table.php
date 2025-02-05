@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('alumns', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 100);
-            $table->string('dni', 9)->unique();
+            $table->char('dni', 9)->unique();
             $table->decimal('media',5,3);
             $table->timestamps();
         });
