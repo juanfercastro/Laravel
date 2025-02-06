@@ -14,12 +14,14 @@
             <th>Nombre</th>
             <th>DNI</th>
             <th>Media</th>
+            <th>Equipo</th>
         </tr>
         @foreach ($alumnos as $a )
             <tr>
                 <td>{{$a->nombre}}</td>
                 <td>{{$a->dni}}</td>
                 <td>{{$a->media}}</td>
+                <td>{{$a->equipo->nombre}}</td>
             </tr>
         @endforeach
     </table>

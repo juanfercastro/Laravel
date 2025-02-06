@@ -4,22 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Alumn;
+use App\Models\Equipo;
 
 class AlumnController extends Controller
 {
-    public function addAlumn(){
-        $nombre = "Ruben Otero";
-        $dni = "55555555X";
-        $media = 05.000;
-        $a = new Alumn();
+    public function altaForm(){
+        $equipos = Equipo::all();
+        return view('form-alumno',['equipos'=>$equipos]);
+    }
+    public function addAlumn(Request $r){
+        $nuevo = new Alumn();
+        $nuevo->nombre = $r->get('nombre');
+        $nuevo->dni = $r->get('dni');
+        $nuevo->media = $r->get('media');
+        $nuevo->equipo_id=$r->get('equipo_id')=='-1'?null:$r->get('equipo_id');
 
-        $a->nombre = $nombre;
-        $a->dni = $dni;
-        $a->media = $media;
+        $nuevo->save();
 
-        $a->save();
-
-        return view('alta-alumn');
+        return $this->getAlumns();
     }
 
     public function getAlumns(){

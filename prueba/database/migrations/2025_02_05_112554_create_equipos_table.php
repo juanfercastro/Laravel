@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->timestamps();
         });
-        Schema::table('alumnos', function(Blueprint $table){
+        Schema::table('alumns', function(Blueprint $table){
             $table->unsignedBigInteger('equipo_id');
             $table->foreign('equipo_id')->references('id')->on('equipos')->onUpdate('cascade')->onDelete('restrict');
         });
@@ -27,8 +27,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        /* Schema::dropIfExists('equipos'); */
-        Schema::dropColumns('alumnos', ['equipo_id']);
-        Schema::dropIfExists('equipos');
-    } 
+    Schema::table('alumnos',function(Blueprint $table){
+
+    $table->dropForeign('equipo_id');
+
+    });
+    Schema::dropIfExists('equipos');
+    }
 };
