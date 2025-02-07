@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AlumnController;
+use App\Http\Controllers\MateriaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HolaController;
 use App\Http\Controllers\ProductController;
@@ -33,3 +34,7 @@ Route::get('/producto/listar/{id}',[ProductController::class, 'getProduct']);
 Route::get('alumno/alta',[AlumnController::class, 'addAlumn']);
 Route::get('/alumno/listar',[AlumnController::class, 'getAlumns']);
 Route::get('/alumno/listar/{id?}',[AlumnController::class, 'getAlumn']);
+
+Route::get('/materia/listar',[MateriaController::class, 'listarMaterias']);
+Route::get('/materia/matricular/{id}', [MateriaController::class, 'matricularAlumnosForm'])->name('matricular-alumnos');
+Route::post('/materia/matricular/{id}', [MateriaController::class, 'matricularAlumnos'])->name('matricular-alumnos');
