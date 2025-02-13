@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('id_equipo');
+            $table->unsignedBigInteger('id_torneo');
+            $table->foreign('id_equipo')->references('id')->on('equipos');
+            $table->foreign('id_torneo')->references('id')->on('torneos');
         });
     }
 
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('equipo_torneo');
     }
 };
